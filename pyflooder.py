@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Author : RootUnited
+# Author : D4Vinci
 # Recoded by : codex31
 # Moved from python2 to python3
 # All copyrights to Squnity team
